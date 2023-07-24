@@ -1,0 +1,44 @@
+ .card {
+    background-color: #a5b1c2;
+    margin: 3px;
+    min-height: 300px;
+  }
+
+  .table-box:hover {
+    background-color:#4b6584;
+    
+  }
+
+    .hero {
+    background: #e10e0e; 
+    background: -webkit-linear-gradient(
+      to right,
+      #b2ad5f,
+      #fa8231
+    ); 
+    background: linear-gradient(
+      to right,
+      #2cc8dd,
+      #e40a02
+    ); 
+  }
+    .title {
+    color: #fff;
+  }
+  
+    #submit {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  @media only screen and (max-width: 599px) {
+  
+    .column {
+      margin: 2px;
+      padding: 0 20px 0 20px;
+    }
+  
+    .card-content {
+      padding: 20px;
+    }
+}
