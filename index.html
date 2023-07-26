@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rivalry Atlas</title>
+    <title>Fetching Baseball</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
@@ -17,7 +17,7 @@
     <section class="hero">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">Rivalry Atlas</h1>
+          <h1 class="title">Fetching Baseball</h1>
         </div>
       </div>
     </section>
@@ -27,29 +27,30 @@
           id="city-input"
           class="input is-info"
           type="text"
-          placeholder="Enter the name of a city"
+          placeholder="Enter the name of a Team"
         />
-        <button id="submit" class="button" type="submit">
-          Get Location
+        <button id="submit" class="button is-small" type="submit">
+          Get Teams
         </button>
       </form>
       <div class="box table-box">
-        <div class="table-container">
+        <div class="table-container ">
           <table id="cityList" class="table is-bordered">
             <tr></tr>
         
           </table>
-          <button id="clr-btn" class="button is-danger">CLEAR</button>
+          <button id="clr-btn" class="button is-danger is-primary is-outlined">CLEAR</button>
+          <div class="column is-one-quarter"></div>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="content">
-        <h2>Maps:</h2>
-        <div class="columns">
-          <div class="column card">
-            <div id="map" class="card-content">
-              <h3 id="current-map" class="has-text-white"></h3>
+        <h2>Teams:</h2>
+        <div class="columns is-one-quarter">
+          <div class="column card is-one-quarter">
+            <div id="stats" class="card-content">
+              <h3 id="current-stats" class="has-text-white"></h3>
               <div id="icon1"></div>
             </div>
     <script src="./Assets/script.js"></script>

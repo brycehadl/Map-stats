@@ -1,4 +1,4 @@
- .card {
+ /* .card {
     background-color: #a5b1c2;
     margin: 3px;
     min-height: 300px;
@@ -41,4 +41,73 @@
     .card-content {
       padding: 20px;
     }
+} */
+
+
+
+
+
+
+
+.table-box {
+  /* background-color:#e4189c; */
+  width: 20%;
+  padding: 5px solid;
+}
+
+tr {
+  margin: 1px;
+}
+
+.card {
+  background-color: #eddfdf;
+  margin: 3px;
+  min-height: 500px;
+  min-width: 1000px;
+}
+
+
+.hero {
+  background: linear-gradient(
+    to right,
+    #d70936,
+    #e5d9c0,
+    #1a41be
+  ); 
+}
+
+.form {
+  background-color: #0960da;
+  margin: 3px;
+  min-height: 300px;
+}
+.input{
+  min-height: 30px;
+  max-width: 300px;
+}
+
+.title {
+  color: #fff;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+#submit {
+  width: 25%;
+  margin-bottom: 30px;
+  background: linear-gradient(
+    #178fcf,
+    #d2cbcd
+  );
+}
+
+@media only screen and (max-width: 599px) {
+
+  .column {
+    margin: 2px;
+    padding: 0 20px 0 20px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
 }
