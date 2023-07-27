@@ -1,3 +1,4 @@
+
 const url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/getMLBTeams';
     const options = {
       method: 'GET',
@@ -73,3 +74,13 @@ const url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com
       });
     });
   
+
+fetch("https://api.the-odds-api.com/v4/sports/?apiKey=d272dd2fc8c59ce6fb029378e95778ad").then
+(function(response){
+    return response.json()
+})
+    .then(function(data){
+        console.log(data)
+    }) 
+
+
