@@ -82,5 +82,54 @@ fetch("https://api.the-odds-api.com/v4/sports/?apiKey=d272dd2fc8c59ce6fb029378e9
     .then(function(data){
         console.log(data)
     }) 
+// Hardcoded API Key
+const apiKey = "7f64ed751f35c455e1329823fdd99709";
 
+// Event Handler function for "Get list of all sports" option
+function getSports() {
+    const userSport = prompt("Enter the sport:");
+    
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.the-odds-api.com/v4/sports?apiKey=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            const filteredSports = data.filter(sport => sport.group.toUpperCase() === userSport.toUpperCase());
+            console.log(filteredSports);
+        });
+}
+
+// Event Handler function for "Print odds" option
+function getOdds() {
+    const sportsKey = prompt("Enter the sports key:");
+    const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
+    const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
+    
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.the-odds-api.com/v4/sports/${sportsKey}/odds?apiKey=${apiKey}&regions=${region}&markets=${market}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        });
+}
+
+// Event Handler function for "Print odds-history" option
+function getOddsHistory() {
+    const sportsKey = prompt("Enter the sports key:");
+    const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
+    const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
+    let date = new Date(prompt("Enter the date (format: YYYY-MM-DD):"));
+    date.setUTCHours(12, 15, 0, 0);  // Setting time to 12:15:00
+    date = date.toISOString().split('.')[0]+"Z";  // Removing milliseconds
+    
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.the-odds-api.com/v4/sports/${sportsKey}/odds-history?apiKey=${apiKey}&regions=${region}&markets=${market}&date=${date}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        });
+}
+
+// Exit function
+function exit() {
+    console.log("Thanks for using our service!");
+}
+
+  
 
