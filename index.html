@@ -1,100 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fetching Baseball</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-   
-    <link rel="stylesheet" href="./Assets/style.css" />
- 
-  </head>
 
-  <body>
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title is-1 level-item">Fetching Baseball</h1>
-        </div>
-      </div>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fetching Baseball</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
 
-    <form>
-      <!--This has been changed line 27 and line 31--> 
-        <input
-          id="team-name"   
-          class="input is-info"
-          type="text"
-          placeholder="Enter Abbreviation for Team"
-        />
-        <button id="submit" class="button is-small level-item" type="submit">
-          Get Teams
-        </button>
-      </form>
-      <div class="box table-box">
-        <div class="table-container ">
-          <!--This has been changed line 40--> 
-          <table id="teamList" class="table is-bordered">
-            <tr></tr>
-        
-          </table>
-          <button id="clr-btn" class="button is-danger is-primary">CLEAR</button>
-          <div id="CC" class="column is-one-quarter"></div>
-        </div>
-      </div>
+  <link rel="stylesheet" href="./Assets/style.css" />
+
+</head>
+
+
+<section class="hero flex-wrap: wrap">
+  <div class="hero-body flex-wrap: wrap">
+    <div class="container flex-wrap: wrap">
+      <h1 class="title is-1 level-item">Fetching Baseball</h1>
     </div>
-    <div class="container">
-      <div class="content">
-        <!--This has been added "version-one"--> 
-        <div class="version-one">
-        <h2>Teams</h2>
-        </div>
-        <div id="CC" class="columns is-one-quarter level-item">
-          <div id="CC" class="column card is-one-quarter">
-            <!--This has been changed line 57 and 58--> 
-            <div id="stats" class="card-content">
-              <h3 id="current-stats" class="has-text-white"></h3>
-              <div id="icon1"></div>
-            </div>
-            <!--New Box Column-->
-            <div class="card-2 column is-one-quarter level">
-              
-            <form class="box">
-              <div class="field">
-                <label class="label">Betting</label>
-                <div class="control">
-                  <input class="input" type="Currency" placeholder="$$$">
-                </div>
-              </div>          
-              <div class="block">
-                Place bets here to win <strong>Money!</strong>
-              </div>
-              <!--footer-->
-              <footer class="footer">
-                <div class="content has-text-centered">
-                  <p>
-                    <strong>Bulma</strong> by <a href="https://jgthms.com">Bryce Hadl, Jaxson Fellhauer, Chistopher Laughlin, & Bryan Reyes. </a> The source code is licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-                  </p>
-                </div>
-              </footer>
+  </div>
+</section>
 
-            
-   
-    <!DOCTYPE html>
-    <h2>Game Odds</h2>
+<form>
+  <!--This has been changed line 27 and line 31-->
+  <input id="team-name" class="input is-info flex-wrap: wrap" type="text" placeholder="Enter Abbreviation for Team" />
+  <button id="submit" class="button is-small level-item" type="submit">
+    Get Teams
+  </button>
+</form>
+<div class="box table-box flex-wrap: wrap">
+  <div class="table-container flex-wrap: wrap">
+    <!--This has been changed line 40-->
+    <table id="teamList" class="table is-bordered flex-wrap: wrap">
+      <tr></tr>
 
-    <button onclick="getSports()">Get list of all sports</button><br>
-    <button onclick="getOdds()">Print odds</button><br>
-    <button onclick="getOddsHistory()">Print odds-history</button><br>
-    <button onclick="exit()">Exit</button><br>
-    
-    <script src="./Assets/script.js"></script>
-     
+    </table>
+    <button id="clr-btn" class="button is-danger is-primary flex-wrap: wrap">CLEAR</button>
+    <div id="CC" class="column is-one-quarter flex-wrap: wrap"></div>
+  </div>
+</div>
 
-</body>
+<div class="container flex-wrap: wrap"></div>
+<div class="content flex-wrap: wrap"></div>
+<!--This has been added "version-one"-->
+<div class="version-one flex-wrap: wrap align-content: stretch">
+  <h2><strong>Teams</strong></h2>
+</div>
+<div id="CC" class="columns is-one-quarter level-item flex-wrap: wrap"></div>
+<div class="column card is-one-quarter flex-wrap: wrap"></div>
+<!--This has been changed line 57 and 58-->
+<div id="stats flex-wrap: wrap" class="card-content flex-wrap: wrap">
+  <h3 id="current-stats flex-wrap: wrap" class="has-text-white flex-wrap: wrap"></h3>
+  <div id="icon1 flex-wrap: wrap"></div>
+</div>
+<!--New Box Column-->
+
+<form class="box flex-wrap: wrap align-items: stretch">
+  <div class="field">
+    <label class="label">Betting</label>
+    <div class="control">
+      <input class="input" type="Currency" placeholder="number">
+    </div>
+  </div>
+  <div class="block">
+    Place bets here to win <strong>Money!</strong>
+  </div>
+  <!--footer-->
+  <footer class="footer flex-wrap: wrap align-content: stretch">
+    <div class="content has-text-centered flex-wrap: wrap align-items: stretch">
+      <p>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Bryce Hadl, Jaxson Fellhauer, Chistopher Laughlin, &
+          Bryan Reyes. </a> The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+
+
+
+  <!DOCTYPE html>
+  <h2>Game Odds</h2>
+
+  <button onclick="getSports()">Get list of all sports</button><br>
+  <button onclick="getOdds()">Print odds</button><br>
+  <button onclick="getOddsHistory()">Print odds-history</button><br>
+  <button onclick="exit()">Exit</button><br>
+
+  <script src="./Assets/script.js"></script>
+
+
+  </body>
+
 </html>
