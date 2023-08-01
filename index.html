@@ -6,7 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fetching Baseball</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link href="./Assets/style.css" rel="stylesheet" />
 </head>
+
+<section class="hero flex-wrap: wrap">
+  <div class="hero-body flex-wrap: wrap">
+    <div class="container flex-wrap: wrap">
+      <h1 class="title is-1 level-item">Fetching Baseball</h1>
+    </div>
+  </div>
+</section>
 
 <form>
   <!--This has been changed line 27 and line 31-->
@@ -53,22 +62,9 @@
     Place bets here to win <strong>Money!</strong>
   </div>
   </form>
-  <!--For Christopher-->
-  <div id="modal-js-example" class="modal">
-    <div class="modal-background"></div>
-  
-    <div class="modal-content">
-      <div class="box">
-        <p>Modal JS example</p>
-        <!-- Your content -->
-      </div>
-    </div>
-  
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div>
-  <button class="js-modal-trigger" data-target="modal-js-example">
-    Open JS example modal
-  </button>
+  <!-- <div id="data-display" class="box">
+
+  </div> -->
 
 
   <!-- <article class="message is-dark">
@@ -83,6 +79,27 @@
  
 
   <!--footer-->
+  <!-- <footer class="footer flex-wrap: wrap align-content: stretch">
+    <div class="content has-text-centered flex-wrap: wrap align-items: stretch">
+      <p>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Bryce Hadl, Jaxson Fellhauer, Chistopher Laughlin, &
+          Bryan Reyes. </a> The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer> -->
+
+
+
+   
+  <h2>Game Odds</h2>
+
+  <button data-target="get-sports-modal" class="js-modal-trigger">Get list of all sports</button><br>
+  <button data-target="get-odds-modal" class="js-modal-trigger">Print odds</button><br>
+  <button data-target="get-odds-history-modal" class="js-modal-trigger">Print odds-history</button><br>
+  <div id="data-display" class="box"></div>
+  
   <footer class="footer flex-wrap: wrap align-content: stretch">
     <div class="content has-text-centered flex-wrap: wrap align-items: stretch">
       <p>
@@ -94,16 +111,6 @@
     </div>
   </footer>
 
-
-
-   
-  <h2>Game Odds</h2>
-
-  <button data-target="get-sports-modal" class="js-modal-trigger">Get list of all sports</button><br>
-  <button data-target="get-odds-modal" class="js-modal-trigger" onclick="getOdds()">Print odds</button><br>
-  <button data-target="get-odds-history-modal" class="js-modal-trigger" onclick="getOddsHistory()">Print odds-history</button><br>
-  
-  
   <div id="get-sports-modal" class="modal">
   <div class="modal-background"></div>
   <div class="modal-content">
@@ -133,11 +140,36 @@
   <div class="modal-background"></div>
   <div class="modal-content">
     <div class="box">
-      <p>Modal JS example</p>
-      <!-- Your content -->
+      <div class="field">
+        <label class="label">Enter the sports key: baseball_mlb or americanfootball</label>
+        <div class="control">
+          <input id="sports-key" class="input" type="text" placeholder="Options: baseball_mlb, americanfootball">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Enter the region:</label>
+        <div class="control">
+          <input id="region" class="input" type="text" placeholder="Options: uk, us, us2, eu, au">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Enter the market:</label>
+        <div class="control">
+          <input id="market" class="input" type="text" placeholder="Options: h2h, spreads, totals, outrights">
+        </div>
+      </div>
     </div>
+    
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" id="submit-odds">Submit</button>
+        </div>
+      </div>
+      <!-- Your content -->
+      
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
   </div>
-  <button class="modal-close is-large" aria-label="close"></button>
 </div>
 
 <div id="get-odds-history-modal" class="modal">
@@ -150,7 +182,6 @@
   </div>
   <button class="modal-close is-large" aria-label="close"></button>
 </div>
-  
 
   <script src="./Assets/script.js"></script>
 

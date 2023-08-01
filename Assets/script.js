@@ -41,7 +41,7 @@ let url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/g
         }
 
         
-        fetch(mlbUrl, mlbOptions)
+        fetch(url, options)
           .then(function (response) {
             return response.json();
           })
@@ -216,11 +216,14 @@ function displayDataInContainer(data) {
 
 
 
-function getOdds(region,market) {
-  // const sportsKey = prompt("Enter the sports key:");
+function getOdds(event) {
+  event.preventDefault()
+  const sportsKey = document.getElementById("sports-key").value;
+  const region = document.getElementById("region").value;
+  const market = document.getElementById("market").value;
   // const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
   // const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
- 
+  
   fetch(`https://api.the-odds-api.com/v4/sports/${sportsKey}/odds?apiKey=${apiKey}&regions=${region}&markets=${market}`)
       .then(response => {
           if (!response.ok) {
@@ -230,6 +233,7 @@ function getOdds(region,market) {
       })
       .then(data => {
           displayDataInContainer(data);
+          closeAllModals()
       })
       .catch(error => {
           console.error("Error fetching data:", error);
@@ -351,3 +355,5 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.getElementById("submit-sports").addEventListener("click", getSports)
+document.getElementById("submit-odds").addEventListener("click", getOdds)
+document.getElementById("submit-odds-history").addEventListener("click", getOddsHistory)
