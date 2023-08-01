@@ -19,20 +19,10 @@ tr {
   background-color: #eddfdf;
   top: 1px;
   margin: 3px;
-  min-height: 700px;
+  min-height: 250px;
   min-width: 1500px;
   column-width: auto;
 }
-.card-2{
-  background-color: #0fc1cb;
-  bottom: -300px;
-  margin: -10px;
-  min-height: 700px;
-  min-width: 1500px;
-  
-  
-}
-
 
 .hero {
   background: linear-gradient(
@@ -41,6 +31,7 @@ tr {
     #e5d9c0,
     #1a41be
   ); 
+  flex-wrap: wrap
 }
 
 .form {
