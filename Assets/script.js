@@ -141,7 +141,7 @@ function displayData(data) {
 function getSports(event) {
   event.preventDefault()
   console.log(event)
-  const userSport = document.getElementById("sport-title").value;
+  let userSport = document.getElementById("sport-title").value;
   console.log(userSport)
   if (userSport !== "Baseball" && userSport !== "Football"){
 
@@ -157,9 +157,10 @@ function getSports(event) {
           return response.json();
       })
       .then(data => {
-          const filteredSports = data.filter(sport => sport.group.toUpperCase() === userSport.toUpperCase());
+          let filteredSports = data.filter(sport => sport.group.toUpperCase() === userSport.toUpperCase());
           displayData(filteredSports);
           console.log(filteredSports);
+          document.getElementById("sport-title").value= "";
           closeAllModals()
       })
       .catch(error => {
@@ -218,9 +219,9 @@ function displayDataInContainer(data) {
 
 function getOdds(event) {
   event.preventDefault()
-  const sportsKey = document.getElementById("sports-key").value;
-  const region = document.getElementById("region").value;
-  const market = document.getElementById("market").value;
+  let sportsKey = document.getElementById("sports-key").value;
+  let region = document.getElementById("region").value;
+  let market = document.getElementById("market").value;
   // const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
   // const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
   
@@ -233,6 +234,9 @@ function getOdds(event) {
       })
       .then(data => {
           displayDataInContainer(data);
+          document.getElementById("sports-key").value= "";
+          document.getElementById("region").value= "";
+          document.getElementById("market").value= "";
           closeAllModals()
       })
       .catch(error => {
@@ -243,12 +247,12 @@ function getOdds(event) {
 
 
 function getOddsHistory() {
-  // const sportsKey = prompt("Enter the sports key:");
-  // const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
-  // const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
-  // const dateInput = prompt("Enter Date");
-
-  fetch(`https://api.the-odds-api.com/v4/sports/${sportsKey}/odds-history/?apiKey=${apiKey}&regions=${region}&markets=${market}&date=${dateInput}`)
+  let historySportsKey = document.getElementById("history-sports-key").value;
+  let historyRegion = document.getElementById("history-region").value;
+  let historyMarket = document.getElementById("history-market").value; 
+  let historyDateInput = new Date(document.getElementById("history-date").value).toISOString().substring(0, 17)+ "00Z"
+  
+  fetch(`https://api.the-odds-api.com/v4/sports/${historySportsKey}/odds-history/?apiKey=${apiKey}&regions=${historyRegion}&markets=${historyMarket}&date=${historyDateInput}`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -257,6 +261,10 @@ function getOddsHistory() {
     })
     .then(data => {
       displayOddsDataInContainer(data);
+      document.getElementById("history-sports-key").value= ""; 
+      document.getElementById("history-region").value= "";
+      document.getElementById("history-market").value= "";
+      document.getElementById("history-market").value= "";
     })
     .catch(error => {
       console.error("Error fetching data:", error);
