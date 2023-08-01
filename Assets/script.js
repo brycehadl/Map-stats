@@ -100,33 +100,10 @@ let url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/g
             console.error("Error fetching data:", error);
           });
       });
-
-
-      const teamListFromLocalStorage = localStorage.getItem('teamList');
-      if (teamListFromLocalStorage) {
-        teamListDiv.innerHTML = teamListFromLocalStorage;
-      }
-
-
-      const teamInfoFromLocalStorage = localStorage.getItem('teamInfo');
-      if (teamInfoFromLocalStorage) {
-        teamInfoDiv.innerHTML = teamInfoFromLocalStorage;
-      }
     });
+  
 
 
-
-
-
-
-
-fetch("https://api.the-odds-api.com/v4/sports/?apiKey=  ").then
-(function(response){
-    return response.json()
-})
-    .then(function(data){
-        console.log(data)
-    }) 
 // Hardcoded API Key
 const apiKey = "7f64ed751f35c455e1329823fdd99709";
 
@@ -161,8 +138,16 @@ function displayData(data) {
 
 
 
-function getSports() {
-  const userSport = prompt("Enter the sport title:");
+function getSports(event) {
+  event.preventDefault()
+  console.log(event)
+  const userSport = document.getElementById("sport-title").value;
+  console.log(userSport)
+  if (userSport !== "Baseball" && userSport !== "Football"){
+
+    document.getElementById("invalid-sport").style.display = "block"
+    return 
+  }
 
   fetch(`https://api.the-odds-api.com/v4/sports?apiKey=${apiKey}`)
       .then(response => {
@@ -175,6 +160,7 @@ function getSports() {
           const filteredSports = data.filter(sport => sport.group.toUpperCase() === userSport.toUpperCase());
           displayData(filteredSports);
           console.log(filteredSports);
+          closeAllModals()
       })
       .catch(error => {
           console.error("Error fetching data:", error);
@@ -230,10 +216,10 @@ function displayDataInContainer(data) {
 
 
 
-function getOdds() {
-  const sportsKey = prompt("Enter the sports key:");
-  const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
-  const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
+function getOdds(region,market) {
+  // const sportsKey = prompt("Enter the sports key:");
+  // const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
+  // const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
  
   fetch(`https://api.the-odds-api.com/v4/sports/${sportsKey}/odds?apiKey=${apiKey}&regions=${region}&markets=${market}`)
       .then(response => {
@@ -253,10 +239,10 @@ function getOdds() {
 
 
 function getOddsHistory() {
-  const sportsKey = prompt("Enter the sports key:");
-  const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
-  const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
-  const dateInput = prompt("Enter Date");
+  // const sportsKey = prompt("Enter the sports key:");
+  // const region = prompt("Enter the region (choices = uk, us, us2, eu, au):");
+  // const market = prompt("Enter the market (choices = h2h, spreads, totals, outrights):");
+  // const dateInput = prompt("Enter Date");
 
   fetch(`https://api.the-odds-api.com/v4/sports/${sportsKey}/odds-history/?apiKey=${apiKey}&regions=${region}&markets=${market}&date=${dateInput}`)
     .then(response => {
@@ -324,11 +310,44 @@ function displayOddsDataInContainer(data) {
 }
 
 
-
-// Exit function
-function exit() {
-    alert("Thanks for using our service!");
+function openModal($el) {
+  $el.classList.add('is-active');
 }
 
-  
+function closeModal($el) {
+  $el.classList.remove('is-active');
+}
 
+function closeAllModals() {
+  (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+    closeModal($modal);
+  });
+}
+
+// Add a click event on buttons to open a specific modal
+(document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+  const modal = $trigger.dataset.target;
+  const $target = document.getElementById(modal);
+
+  $trigger.addEventListener('click', () => {
+    openModal($target);
+  });
+});
+
+// Add a click event on various child elements to close the parent modal
+(document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+  const $target = $close.closest('.modal');
+
+  $close.addEventListener('click', () => {
+    closeModal($target);
+  });
+});
+
+// Add a keyboard event to close all modals
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Escape') {
+    closeAllModals();
+  }
+});
+
+document.getElementById("submit-sports").addEventListener("click", getSports)
