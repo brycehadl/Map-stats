@@ -70,9 +70,6 @@ tr {
 
 
 .footer {
-  position: relative;
-  left: 0;
-  bottom: -700px;
   width: auto;
   background-color: rgb(223, 82, 82);
   color: white;

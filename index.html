@@ -6,7 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fetching Baseball</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link href="./Assets/style.css" rel="stylesheet" />
 </head>
+
+<section class="hero flex-wrap: wrap">
+  <div class="hero-body flex-wrap: wrap">
+    <div class="container flex-wrap: wrap">
+      <h1 class="title is-1 level-item">Fetching Baseball</h1>
+    </div>
+  </div>
+</section>
 
 <form>
   <!--This has been changed line 27 and line 31-->
@@ -52,7 +61,45 @@
   <div class="block">
     Place bets here to win <strong>Money!</strong>
   </div>
+  </form>
+  <!-- <div id="data-display" class="box">
+
+  </div> -->
+
+
+  <!-- <article class="message is-dark">
+    <div class="message-header">
+      <p>Dark</p>
+      <button class="delete" aria-label="delete"></button>
+    </div>
+    <div class="message-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+    </div>
+  </article> -->
+ 
+
   <!--footer-->
+  <!-- <footer class="footer flex-wrap: wrap align-content: stretch">
+    <div class="content has-text-centered flex-wrap: wrap align-items: stretch">
+      <p>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Bryce Hadl, Jaxson Fellhauer, Chistopher Laughlin, &
+          Bryan Reyes. </a> The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer> -->
+
+
+
+   
+  <h2>Game Odds</h2>
+
+  <button data-target="get-sports-modal" class="js-modal-trigger">Get list of all sports</button><br>
+  <button data-target="get-odds-modal" class="js-modal-trigger">Print odds</button><br>
+  <button data-target="get-odds-history-modal" class="js-modal-trigger">Print odds-history</button><br>
+  <div id="data-display" class="box"></div>
+  
   <footer class="footer flex-wrap: wrap align-content: stretch">
     <div class="content has-text-centered flex-wrap: wrap align-items: stretch">
       <p>
@@ -64,14 +111,80 @@
     </div>
   </footer>
 
+  <div id="get-sports-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <div class="field">
+        <label class="label">Enter the sport title:</label>
+        <div class="control">
+          <input id="sport-title" class="input" type="text" placeholder="Options: Baseball, Football">
+        </div>
+      </div>
+      <p style="display:none" id="invalid-sport"class="help is-danger">Invalid Sport! Valid Sports are Baseball and Football</p>
+    </div>
+    
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" id="submit-sports">Submit</button>
+        </div>
+      </div>
+      <!-- Your content -->
+      
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+</div>
 
+<div id="get-odds-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <div class="field">
+        <label class="label">Enter the sports key: baseball_mlb or americanfootball</label>
+        <div class="control">
+          <input id="sports-key" class="input" type="text" placeholder="Options: baseball_mlb, americanfootball">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Enter the region:</label>
+        <div class="control">
+          <input id="region" class="input" type="text" placeholder="Options: uk, us, us2, eu, au">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Enter the market:</label>
+        <div class="control">
+          <input id="market" class="input" type="text" placeholder="Options: h2h, spreads, totals, outrights">
+        </div>
+      </div>
+    </div>
+    
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" id="submit-odds">Submit</button>
+        </div>
+      </div>
+      <!-- Your content -->
+      
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+</div>
 
-  <!DOCTYPE html>
-  <h2>Game Odds</h2>
-
-  <button onclick="getSports()">Get list of all sports</button><br>
-  <button onclick="getOdds()">Print odds</button><br>
-  <button onclick="getOddsHistory()">Print odds-history</button><br>
-  <button onclick="exit()">Exit</button><br>
+<div id="get-odds-history-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <p>Modal JS example</p>
+      <!-- Your content -->
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
 
   <script src="./Assets/script.js"></script>
+
+  </body>
+
+</html>
