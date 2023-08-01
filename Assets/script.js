@@ -9,18 +9,39 @@ let url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/g
 
     document.addEventListener("DOMContentLoaded", function () {
       const submitButton = document.getElementById("submit");
+      const teamListDiv = document.getElementById("teamList");
+      const teamInfoDiv = document.getElementById("stats");
+      const clearButton = document.getElementById("clr-btn");
+
+
+      function clearLocalStorageData() {
+        localStorage.removeItem('teamList');
+        localStorage.removeItem('teamInfo');
+        teamListDiv.innerHTML = '';
+        teamInfoDiv.innerHTML = '';
+      }
+
+
+      function displayTeamInfo(teamAbbreviation, teamInfoHTML) {
+        teamInfoDiv.innerHTML = teamInfoHTML;
+      }
+
+      clearButton.addEventListener("click", function () {
+        clearLocalStorageData();
+      });
 
       submitButton.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
         const teamAbbreviation = document.getElementById("team-name").value.trim();
-        
+
         if (teamAbbreviation === '') {
           console.log("Please enter a team abbreviation.");
           return;
         }
 
-        fetch(url, options)
+        
+        fetch(mlbUrl, mlbOptions)
           .then(function (response) {
             return response.json();
           })
@@ -30,9 +51,6 @@ let url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/g
             if (teams.length === 0) {
               console.log(`No information found for team "${teamAbbreviation}".`);
             } else {
-              const teamListDiv = document.getElementById("teamList");
-              teamListDiv.innerHTML = "";
-
               const selectedTeam = teams.find(team => team.teamAbv === teamAbbreviation.toUpperCase());
 
               if (!selectedTeam) {
@@ -45,7 +63,6 @@ let url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/g
               const teamLosses = selectedTeam?.loss ?? "N/A";
               const teamName = selectedTeam?.teamName ?? "N/A";
               const teamLeague = selectedTeam?.teamLeague ?? "N/A";
-              const teamLogo = selectedTeam?.logo ?? "N/A";
 
               console.log(`Team Abbreviation: ${teamAbbreviation}`);
               console.log(`City: ${teamCity}`);
@@ -55,7 +72,7 @@ let url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/g
               console.log(`Team Name: ${teamName}`);
               console.log("------");
 
-              // Displayed team info
+              // Displayed team info 
               const teamInfoHTML = `
                 <h2>${teamName}</h2>
                 <p>Team Abbreviation: ${teamAbbreviation}</p>
@@ -64,15 +81,44 @@ let url = 'https://tank01-mlb-live-in-game-real-time-statistics.p.rapidapi.com/g
                 <p>Runs Scored: ${runsScored}</p>
                 <p>Losses: ${teamLosses}</p>
               `;
-              teamListDiv.innerHTML = teamInfoHTML;
+              teamInfoDiv.innerHTML = teamInfoHTML;
+
+
+              const teamListItem = document.createElement('p');
+              teamListItem.innerText = teamAbbreviation;
+              teamListDiv.appendChild(teamListItem);
+              localStorage.setItem('teamList', teamListDiv.innerHTML);
+
+
+              teamListItem.addEventListener('click', function () {
+  
+                displayTeamInfo(teamAbbreviation, teamInfoHTML);
+              });
             }
           })
           .catch(function (error) {
             console.error("Error fetching data:", error);
           });
       });
+
+
+      const teamListFromLocalStorage = localStorage.getItem('teamList');
+      if (teamListFromLocalStorage) {
+        teamListDiv.innerHTML = teamListFromLocalStorage;
+      }
+
+
+      const teamInfoFromLocalStorage = localStorage.getItem('teamInfo');
+      if (teamInfoFromLocalStorage) {
+        teamInfoDiv.innerHTML = teamInfoFromLocalStorage;
+      }
     });
-  
+
+
+
+
+
+
 
 fetch("https://api.the-odds-api.com/v4/sports/?apiKey=  ").then
 (function(response){
