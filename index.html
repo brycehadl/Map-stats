@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
   <link href="./Assets/style.css" rel="stylesheet" />
 </head>
-
+<body class="container">
 <section class="hero flex-wrap: wrap">
   <div class="hero-body flex-wrap: wrap">
     <div class="container flex-wrap: wrap">
@@ -16,38 +16,33 @@
     </div>
   </div>
 </section>
-
 <form>
   <!--This has been changed line 27 and line 31-->
-  <input id="team-name" class="input is-info flex-wrap: wrap" type="text" placeholder="Enter Abbreviation for Team" />
-  <button id="submit" class="button is-small level-item" type="submit">
+  <input id="team-name" class=" input field level-item is-info mx-auto" type="text" placeholder="Enter Abbreviation for Team" />
+  <button id="submit" class="button is-small level-item mx-auto" type="submit">
     Get Teams
   </button>
 </form>
-<div class="box table-box flex-wrap: wrap">
+<div class="box table-box mx-auto flex-wrap: wrap">
   <div class="table-container flex-wrap: wrap">
     <!--This has been changed line 40-->
     <table id="teamList" class="table is-bordered flex-wrap: wrap">
-      <tr></tr>
-
     </table>
-    <button id="clr-btn" class="button is-danger is-primary flex-wrap: wrap">CLEAR</button>
+    <button id="clr-btn" class="button is-danger is-primary flex-wrap: wrap mx-auto level-item">CLEAR</button>
     <div id="CC" class="column is-one-quarter flex-wrap: wrap"></div>
   </div>
 </div>
-
-<div class="container flex-wrap: wrap"></div>
-<div class="content flex-wrap: wrap"></div>
+<img class="mx-auto level-item" src="./Assets/images/pexels-steshka-willems-1661950.jpg" alt="Baseball mit" >
 <!--This has been added "version-one"-->
 <div class="version-one flex-wrap: wrap align-content: stretch">
-  <h2><strong>Teams</strong></h2>
+  <h2><strong>Teams ⚾</strong></h2>
 </div>
-<div id="CC" class="columns is-one-quarter level-item flex-wrap: wrap"></div>
-<div id = "stats" class="column card is-one-quarter flex-wrap: wrap"></div>
+<div  class="columns flex-wrap: wrap"></div>
+<div id = "stats" class="message-header"></div>
 <!--This has been changed line 57 and 58-->
-<div id="stabs flex-wrap: wrap" class="card-content flex-wrap: wrap">
-  <h3 id="current-stats flex-wrap: wrap" class="has-text-white flex-wrap: wrap"></h3>
-  <div id="icon1 flex-wrap: wrap"></div>
+
+  
+  
 </div>
 <!--New Box Column-->
 
@@ -93,11 +88,11 @@
 
 
    
-  <h2>Game Odds</h2>
+  <h2 class="level-item mx-auto">Game Odds</h2>
 
-  <button data-target="get-sports-modal" class="js-modal-trigger">Get list of all sports</button><br>
-  <button data-target="get-odds-modal" class="js-modal-trigger">Print odds</button><br>
-  <button data-target="get-odds-history-modal" class="js-modal-trigger">Print odds-history</button><br>
+  <button data-target="get-sports-modal" class="js-modal-trigger level-item mx-auto">Get list of all sports</button><br>
+  <button data-target="get-odds-modal" class="js-modal-trigger level-item mx-auto">Print odds</button><br>
+  <button data-target="get-odds-history-modal" class="js-modal-trigger level-item mx-auto">Print odds-history</button><br>
   <div id="data-display" class="box"></div>
   
   <footer class="footer flex-wrap: wrap align-content: stretch">
